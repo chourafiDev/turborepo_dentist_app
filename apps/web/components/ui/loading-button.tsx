@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LuCircleDashed } from "react-icons/lu";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 const wait = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));

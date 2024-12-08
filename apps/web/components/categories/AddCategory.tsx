@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import TextAreaField from "@/components/form-elements/TextAreaField";
 import { AddSquareIcon } from "@/utils/assets";
 import InputField from "../form-elements/InputField";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "@/components/ui/loading-button";
 
 const AddCategory = () => {
   const form = useForm<TCategorySchema>({

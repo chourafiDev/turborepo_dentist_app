@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import MenuItems from "./MenuItems";
 import { useShallow } from "zustand/react/shallow";
 import { useStore } from "@/store";
-import CustomScrollbars from "@/components/CustomScrollbars";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Index = () => {
   const { isSidebarOpen } = useStore(
@@ -24,9 +24,9 @@ const Index = () => {
     >
       <Logo />
 
-      <CustomScrollbars>
+      <ScrollArea className="h-auto w-full">
         <MenuItems />
-      </CustomScrollbars>
+      </ScrollArea>
     </aside>
   );
 };

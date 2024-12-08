@@ -8,7 +8,7 @@ import { DataTable } from "@/components/table/data-table";
 import { DataTablePagination } from "@/components/table/pagination";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import DeleteConfirmationDialog from "@/components/DeleteConfirmationDialog";
+import DeleteConfirmationDialog from "@/components/ui/delete-confirmation-dialog";
 import EditAppointment from "@/components/appointment/EditAppointment";
 import {
   Popover,

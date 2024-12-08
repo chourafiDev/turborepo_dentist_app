@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import TextAreaField from "@/components/form-elements/TextAreaField";
 import InputField from "@/components/form-elements/InputField";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "@/components/ui/loading-button";
 
 type EditCategoryProps = {
   isEditOpen: boolean;

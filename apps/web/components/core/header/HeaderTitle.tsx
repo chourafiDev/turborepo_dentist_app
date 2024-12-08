@@ -37,7 +37,7 @@ const HeaderTitle = () => {
   }
 
   return (
-    <h1 className="text-dark-2 dark:text-white text-lg font-semibold">
+    <h1 className="text-dark-2 dark:text-white lg:text-lg text-base font-semibold">
       {handleActivePathname(pathname)}
     </h1>
   );

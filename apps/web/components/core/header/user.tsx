@@ -27,7 +27,7 @@ const User = () => {
               className="absolute object-cover"
             />
           </div>
-          <div>
+          <div className="md:block hidden">
             <h6 className="text-dark-2 dark:text-white font-semibold text-sm">
               Abdelmonaime Chourafi
             </h6>
@@ -35,7 +35,7 @@ const User = () => {
               Super Admin
             </p>
           </div>
-          <ArrowDownIcon className="size-5 dark:text-white text-dark-2 ml-3" />
+          <ArrowDownIcon className="size-5 dark:text-white text-dark-2 ml-3 md:block hidden" />
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-[300px]">

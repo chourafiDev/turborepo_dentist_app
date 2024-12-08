@@ -20,12 +20,12 @@ import { Button } from "@/components/ui/button";
 import { patients } from "@/utils/data";
 import TextAreaField from "@/components/form-elements/TextAreaField";
 import SelectField from "@/components/form-elements/SelectField";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "@/components/ui/loading-button";
 import { Calendar } from "@/types/calendar";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import InputField from "../form-elements/InputField";
 import moment from "moment-timezone";
-import DeleteConfirmationDialog from "../DeleteConfirmationDialog";
+import DeleteConfirmationDialog from "../ui/delete-confirmation-dialog";
 import { Textarea } from "../ui/textarea";
 
 type AddEventProps = {

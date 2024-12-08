@@ -10,9 +10,8 @@ const Logo = () => {
     }))
   );
 
-  console.log("AppLogo", AppLogo);
   return (
-    <div className="h-[70px] flex justify-center items-center bg-dark-3/40">
+    <div className="py-4 flex justify-center items-center bg-dark-3/40">
       <Link href="/">
         {isSidebarOpen ? (
           <AppLogo className="w-44 h-8" />

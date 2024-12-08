@@ -26,7 +26,7 @@ import { staff } from "@/utils/data";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
-import DeleteConfirmationDialog from "@/components/DeleteConfirmationDialog";
+import DeleteConfirmationDialog from "@/components/ui/delete-confirmation-dialog";
 import {
   FolderIcon,
   PenIcon,

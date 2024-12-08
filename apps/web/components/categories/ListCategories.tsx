@@ -9,7 +9,7 @@ import { DataTable } from "@/components/table/data-table";
 import { DataTablePagination } from "@/components/table/pagination";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import DeleteConfirmationDialog from "@/components/DeleteConfirmationDialog";
+import DeleteConfirmationDialog from "@/components/ui/delete-confirmation-dialog";
 
 // icons
 import { PenIcon, TrashIcon } from "@/utils/assets";
@@ -28,6 +28,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import EditCategory from "./EditCategory";
+import InputField from "../form-elements/InputField";
 
 const ListCategories = () => {
   const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
@@ -127,6 +128,8 @@ const ListCategories = () => {
         className="max-w-sm mb-4"
       />
 
+{/*       <InputField label="Name" name="name" required />
+ */}
       <div className="border-t border-dashed border-mistyBlue/20 pt-2 mt-5">
         <DataTable columns={columns} table={table} />
       </div>

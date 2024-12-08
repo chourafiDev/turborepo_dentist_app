@@ -6,6 +6,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import classNames from "classnames";
 
 type InputFieldProps = {
@@ -41,11 +42,9 @@ const InputField = ({
           <FormControl>
             <Input
               type={type}
-              className={classNames({
-                "focus:ring-[1.5px] focus:ring-brand focus:ring-offset-[1.5px] dark:ring-offset-dark-3":
-                  !fieldState.error,
-                "dark:border-red-500 border-red-500": fieldState.error,
-              })}
+              className={cn(
+                fieldState.error && "dark:border-red-500 border-red-500 focus:ring-0"
+              )}
               {...field}
               onChange={(e) => {
                 const value = e.target.value;

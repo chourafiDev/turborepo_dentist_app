@@ -24,7 +24,7 @@ import TextAreaField from "@/components/form-elements/TextAreaField";
 import SelectField from "@/components/form-elements/SelectField";
 import DatePickerField from "@/components/form-elements/DatePickerField";
 import { AddSquareIcon } from "@/utils/assets";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "@/components/ui/loading-button";
 
 const AddAppointment = () => {
   const form = useForm<TAppointmentFormSchema>({

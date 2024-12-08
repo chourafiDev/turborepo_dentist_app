@@ -107,7 +107,9 @@ const MenuItem = ({
         onClick={() => toggleSubMenu(item["menu-item"])}
         className={cn(
           "group w-full flex justify-between relative items-center gap-4 text-sm font-medium text-mistyBlue hover:bg-mistyBlue/10 hover:text-white duration-300 p-[10px] rounded-lg",
-          subMenuSelected === item["menu-item"]! && "bg-mistyBlue/10 text-white"
+          subMenuSelected === item["menu-item"]! &&
+            "bg-mistyBlue/10 text-white",
+          !isSidebarOpen && "justify-center"
         )}
       >
         <div className="flex items-center gap-4">
@@ -127,6 +129,7 @@ const MenuItem = ({
             {item["menu-item"]}
           </p>
         </div>
+
         {isSidebarOpen && (
           <IoChevronDownOutline
             className={cn(
@@ -140,7 +143,7 @@ const MenuItem = ({
 
         <div
           className={cn(
-            "fixed left-32 z-[99] bg-dark shadow-2xl shadow-dark-2/5 text-[13px] font-medium whitespace-pre text-dark-2 rounded-md px-0 py-0 w-0 overflow-hidden group-hover:w-fit group-hover:py-3 group-hover:px-3 group-hover:left-14 group-hover:duration-500",
+            "fixed left-32 z-[99] bg-dark-3 shadow-2xl shadow-dark-2/5 text-[13px] font-medium whitespace-pre text-dark-2 rounded-md px-0 py-0 w-0 overflow-hidden group-hover:w-fit group-hover:py-3 group-hover:px-3 group-hover:left-14 group-hover:duration-500",
             isSidebarOpen && "hidden"
           )}
         >
@@ -151,7 +154,7 @@ const MenuItem = ({
                   href={subItem["menu-link"]}
                   className="hover:text-brand duration-100"
                 >
-                  {subItem["menu-item"]}
+                  {subItem["menu-item"]} test
                 </Link>
               </li>
             ))}
@@ -191,22 +194,25 @@ const MenuItem = ({
       </AnimatePresence>
     </li>
   ) : (
-    <li key={idx}>
+    <li key={idx} className="relative">
       <Link
         href={item["menu-link"]!}
         className={cn(
           "group flex relative items-center gap-4 text-sm font-medium text-mistyBlue hover:bg-mistyBlue/10 hover:text-white duration-300 p-[10px] rounded-lg",
           pathname === item["menu-link"] &&
             !subMenuSelected &&
-            "bg-mistyBlue/10 text-white"
+            "bg-mistyBlue/10 text-white ",
+          !isSidebarOpen && "justify-center"
         )}
         onClick={handleLinkClick}
       >
+        {/* Render the menu icon */}
         {createElement(item["menu-icon"], {
           width: 20,
           height: 20,
         })}
 
+        {/* Render the menu text */}
         <p
           style={{ transitionDelay: `${idx + 1}00ms` }}
           className={cn(
@@ -218,15 +224,7 @@ const MenuItem = ({
           {item["menu-item"]}
         </p>
 
-        <div
-          className={cn(
-            "fixed left-32 z-[99] bg-dark shadow-2xl shadow-dark-2/5 text-[13px] font-medium whitespace-pre text-white hover:text-brand duration-100 rounded-md px-0 py-0 w-0 overflow-hidden group-hover:w-fit group-hover:py-3 group-hover:px-3 group-hover:left-14 group-hover:duration-500",
-            isSidebarOpen && "hidden"
-          )}
-        >
-          <span className="px-3">{item["menu-item"]}</span>
-        </div>
-
+        {/* Add a badge or label for the menu-item */}
         {item["menu-item"] == "Dashboard" && (
           <span
             className={cn(
@@ -271,6 +269,15 @@ const MenuItem = ({
             8
           </span>
         )}
+
+        <div
+          className={cn(
+            "fixed left-32 z-[99] bg-dark-3 shadow-2xl shadow-dark-2/5 text-[13px] font-medium whitespace-pre text-white hover:text-brand duration-100 rounded-md px-0 py-0 w-0 overflow-hidden group-hover:w-fit group-hover:py-3 group-hover:px-3 group-hover:left-14 group-hover:duration-500",
+            isSidebarOpen && "hidden"
+          )}
+        >
+          <span className="px-3">{item["menu-item"]}</span>
+        </div>
       </Link>
     </li>
   );

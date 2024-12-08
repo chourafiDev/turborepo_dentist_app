@@ -3,7 +3,6 @@ import {
   Clipboard2Icon,
   DollarIcon,
   GalleryAddIcon,
-  StethoscopeIcon,
   user,
   user1,
   user2,
@@ -17,18 +16,15 @@ import {
   SettingsIcon,
   DocumentIcon,
   ClipboardIcon,
-  ChartIcon,
   UsersIcon,
   WidgetIcon,
   InfoIcon,
   CalendarIcon,
   ShieldUserIcon,
   UserIdIcon,
-  MedicalKitIcon,
   ClockIcon,
   Widget2Icon,
 } from "@/utils/assets";
-import moment from "moment-timezone";
 import { Views } from "react-big-calendar";
 
 export const sideBarItems = [
@@ -137,6 +133,26 @@ export const sideBarItems = [
         "menu-item": "History",
         "menu-link": "/history",
         "menu-icon": ClockIcon,
+      },
+      {
+        "menu-item": "Help",
+        "menu-link": "/help",
+        "menu-icon": InfoIcon,
+      },
+      {
+        "menu-item": "Help",
+        "menu-link": "/help",
+        "menu-icon": InfoIcon,
+      },
+      {
+        "menu-item": "Help",
+        "menu-link": "/help",
+        "menu-icon": InfoIcon,
+      },
+      {
+        "menu-item": "Help",
+        "menu-link": "/help",
+        "menu-icon": InfoIcon,
       },
       {
         "menu-item": "Help",
@@ -701,7 +717,6 @@ export const calendarEvents = [
     description: "Presentation to showcase the new product.",
   },
 ];
-
 
 export const VIEW_OPTIONS = [
   { id: Views.DAY, label: "Day" },

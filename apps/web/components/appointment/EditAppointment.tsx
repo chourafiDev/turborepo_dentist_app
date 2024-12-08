@@ -21,7 +21,7 @@ import { patients, time } from "@/utils/data";
 import TextAreaField from "@/components/form-elements/TextAreaField";
 import SelectField from "@/components/form-elements/SelectField";
 import DatePickerField from "@/components/form-elements/DatePickerField";
-import LoadingButton from "@/components/LoadingButton";
+import LoadingButton from "@/components/ui/loading-button";
 
 type EditAppointmentProps = {
   isEditOpen: boolean;

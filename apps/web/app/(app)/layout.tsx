@@ -6,7 +6,7 @@ import Header from "@/components/core/header";
 import Footer from "@/components/core/footer";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "@/lib/theme-provider";
-import PageWrapper from "@/components/core/PageWrapper";
+import PageWrapper from "@/components/core/page-wrapper";
 import { Toaster } from "react-hot-toast";
 
 const montserrat = Montserrat({
