@@ -206,6 +206,21 @@ export const appointmentWithCalendarFormSchema = z.object({
     .optional(),
 });
 
+// Patient Filters Form
+export const patientFiltersFormSchema = z.object({
+  name: z.string().optional(),
+  gender: z.string().optional(),
+  action: z.string().optional(),
+  date: z.date().optional(),
+});
+
+// Staff Filters Form
+export const staffFiltersFormSchema = z.object({
+  name: z.string().optional(),
+  gender: z.string().optional(),
+  date: z.date().optional(),
+});
+
 export type TLoginSchema = z.infer<typeof loginSchema>;
 export type TCategorySchema = z.infer<typeof categorySchema>;
 export type TPatientFirstFormSchema = z.infer<typeof patientFirstFormSchema>;
@@ -217,4 +232,10 @@ export type TStaffSecondFormSchema = z.infer<typeof staffSecondFormSchema>;
 export type TAppointmentFormSchema = z.infer<typeof appointmentFormSchema>;
 export type TAppointmentWithCalendarFormSchema = z.infer<
   typeof appointmentWithCalendarFormSchema
+>;
+export type TPatientFiltersFormSchema = z.infer<
+  typeof patientFiltersFormSchema
+>;
+export type TStaffFiltersFormSchema = z.infer<
+  typeof staffFiltersFormSchema
 >;

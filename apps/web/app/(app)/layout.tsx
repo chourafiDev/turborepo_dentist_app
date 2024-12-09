@@ -7,7 +7,7 @@ import Footer from "@/components/core/footer";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "@/lib/theme-provider";
 import PageWrapper from "@/components/core/page-wrapper";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

@@ -22,7 +22,7 @@ type DatePickerFieldProps = {
   form: any;
   name: string;
   label: string;
-  required: boolean;
+  required?: boolean;
 };
 
 const DatePickerField = ({
@@ -37,7 +37,7 @@ const DatePickerField = ({
       name={name}
       render={({ field, fieldState }) => (
         <FormItem className="flex flex-col">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mb-1">
             <FormLabel>
               {label}{" "}
               {required && <span className="text-red-600 text-base">*</span>}
@@ -60,7 +60,9 @@ const DatePickerField = ({
                   {field.value ? (
                     format(field.value, "PPP")
                   ) : (
-                    <span>Pick a date</span>
+                    <span className="dark:text-white text-slate-500">
+                      Pick a date
+                    </span>
                   )}
                   <CalendarLineIcon className="size-4" />
                 </Button>

@@ -2,8 +2,7 @@ import { StaticImageData } from "next/image";
 
 export type Staff = {
   id: number;
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
   phone: string;
   age: number;

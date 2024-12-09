@@ -37,8 +37,8 @@ const AddAppointment = () => {
   }
 
   const patientsList = patients.map((el) => ({
-    value: `${el.firstName} ${el.lastName}`,
-    label: `${el.firstName} ${el.lastName}`,
+    value: el.fullName,
+    label: el.fullName,
   }));
 
   return (

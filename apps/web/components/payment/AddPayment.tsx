@@ -18,11 +18,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import RadioButtonCards from "@/components/form-elements/RadioButtonCards";
-import { diseases, patients, time } from "@/utils/data";
-import TextAreaField from "@/components/form-elements/TextAreaField";
+import { diseases, patients } from "@/utils/data";
 import SelectField from "@/components/form-elements/SelectField";
-import DatePickerField from "@/components/form-elements/DatePickerField";
 import { AddSquareIcon } from "@/utils/assets";
 import InputField from "../form-elements/InputField";
 
@@ -37,8 +34,8 @@ const AddPayment = () => {
   }
 
   const patientsList = patients.map((el) => ({
-    value: `${el.firstName} ${el.lastName}`,
-    label: `${el.firstName} ${el.lastName}`,
+    value: el.fullName,
+    label: el.fullName,
   }));
 
   return (

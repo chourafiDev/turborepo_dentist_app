@@ -20,7 +20,7 @@ type SelectProps = {
   name: string;
   label: string;
   data: { value: string; label: string }[];
-  required: boolean;
+  required?: boolean;
   placeholder?: string;
 };
 

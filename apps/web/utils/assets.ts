@@ -53,6 +53,8 @@ import { default as CloseCricleIcon } from "../public/assets/images/icons/close-
 import { default as ArrowLeftIcon } from "../public/assets/images/icons/arrow-left.svg";
 import { default as ArrowRightIcon } from "../public/assets/images/icons/arrow-right.svg";
 import { default as ArrowDownIcon } from "../public/assets/images/icons/arrow-down.svg";
+import { default as SearchIcon } from "../public/assets/images/icons/search.svg";
+import { default as CloseCircleOutlineIcon } from "../public/assets/images/icons/close-circle-outline.svg";
 
 export {
   AppLogo,
@@ -90,6 +92,7 @@ export {
   EyeIcon,
   EyeClosedIcon,
   DangerCircleIcon,
+  CloseCircleOutlineIcon,
   UserIcon,
   LogoutIcon,
   MaximizeIcon,
@@ -97,6 +100,7 @@ export {
   Widget2Icon,
   InboxInIcon,
   DiplomaVerifiedIcon,
+  SearchIcon,
   FolderIcon,
   SortVerticalIcon,
   LetterIcon,

@@ -1,50 +1,29 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { DataTable } from "@/components/table/data-table";
-import { DataTablePagination } from "@/components/table/pagination";
-import { Button } from "@/components/ui/button";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { DataTable } from "@/components/data-table-components/data-table";
+import { patients } from "@/utils/data";
+import { ColumnDef } from "@tanstack/react-table";
+import { Checkbox } from "@/components/ui/checkbox";
+import { DataTableColumnHeader } from "../data-table-components/data-table-column-header";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { Button } from "../ui/button";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import { patients } from "@/utils/data";
-import Image from "next/image";
-import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
+import { PenIcon, TrashIcon } from "@/utils/assets";
+import { useState } from "react";
+import DeleteConfirmationDialog from "../ui/delete-confirmation-dialog";
 import { cn } from "@/lib/utils";
 import { Patient } from "@/types/patient";
-import DeleteConfirmationDialog from "@/components/ui/delete-confirmation-dialog";
-import {
-  FolderIcon,
-  PenIcon,
-  SortVerticalIcon,
-  TrashIcon,
-} from "@/utils/assets";
-import Link from "next/link";
+import PatientFilters from "./patient-filters";
 
-const ListPatients = () => {
+const ListPatient = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [rowSelection, setRowSelection] = useState({});
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 5,
-  });
 
   const columns: ColumnDef<Patient>[] = [
     {
@@ -57,6 +36,7 @@ const ListPatients = () => {
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
+          className="translate-y-0.5"
         />
       ),
       cell: ({ row }) => (
@@ -64,6 +44,7 @@ const ListPatients = () => {
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
           aria-label="Select row"
+          className="translate-y-0.5"
         />
       ),
       enableSorting: false,
@@ -71,7 +52,9 @@ const ListPatients = () => {
     },
     {
       accessorKey: "image",
-      header: "Image",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Image" />
+      ),
       cell: ({ row }) => (
         <Image
           src={row.getValue("image")}
@@ -81,68 +64,96 @@ const ListPatients = () => {
           className="rounded-full object-cover"
         />
       ),
+      enableSorting: false,
+      enableHiding: false,
     },
     {
-      accessorKey: "firstName",
-      header: ({ column }) => {
-        return (
-          <button
-            className="flex items-center gap-2"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            First Name
-            <SortVerticalIcon className="size-5" />
-          </button>
-        );
-      },
-      cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("firstName")}</div>
+      accessorKey: "fullName",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Full Name" />
       ),
-    },
-    {
-      accessorKey: "lastName",
-      header: ({ column }) => {
-        return (
-          <button
-            className="flex items-center gap-2"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Last Name
-            <SortVerticalIcon className="size-5" />
-          </button>
-        );
-      },
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("lastName")}</div>
+        <div className="capitalize">{row.getValue("fullName")}</div>
       ),
-    },
-    {
-      accessorKey: "gender",
-      header: "Gender",
-      cell: ({ row }) => (
-        <div
-          className={cn(
-            "inline-block px-4 py-1 rounded-lg font-medium text-[12px]",
-            row.getValue("gender") == "Male"
-              ? "bg-purple/10 text-purple"
-              : "bg-orange/10 text-orange"
-          )}
-        >
-          {row.getValue("gender")}
-        </div>
-      ),
+      enableSorting: false,
+      enableHiding: false,
     },
     {
       accessorKey: "age",
-      header: "Age",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Age" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div className="flex space-x-2">
+            <span className="truncate font-medium capitalize">
+              {row.getValue("age")}
+            </span>
+          </div>
+        );
+      },
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id));
+      },
+    },
+    {
+      accessorKey: "gender",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Gender" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div
+            className={cn(
+              "inline-block px-4 py-1 rounded-lg font-medium text-[12px]",
+              row.getValue("gender") == "Male"
+                ? "bg-purple/10 text-purple"
+                : "bg-orange/10 text-orange"
+            )}
+          >
+            {row.getValue("gender")}
+          </div>
+        );
+      },
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id));
+      },
     },
     {
       accessorKey: "email",
-      header: "Email",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Email" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div className="flex space-x-2">
+            <span className="truncate font-medium capitalize">
+              {row.getValue("email")}
+            </span>
+          </div>
+        );
+      },
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id));
+      },
     },
     {
       accessorKey: "phone",
-      header: "Phone",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Phone" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div className="flex space-x-2">
+            <span className="truncate font-medium capitalize">
+              {row.getValue("phone")}
+            </span>
+          </div>
+        );
+      },
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id));
+      },
     },
     {
       id: "actions",
@@ -159,17 +170,17 @@ const ListPatients = () => {
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
                 <Link
-                  href={`/patients/${row.id}`}
+                  href={`/staff/${row.id}`}
                   className="flex items-center gap-3"
                 >
-                  <PenIcon className="size-5" /> Edit
+                  <PenIcon className="size-4" /> Edit
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => setIsDeleteOpen(true)}
                 className="cursor-pointer"
               >
-                <TrashIcon className="size-5" />
+                <TrashIcon className="size-4" />
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -179,48 +190,10 @@ const ListPatients = () => {
     },
   ];
 
-  const table = useReactTable({
-    data: patients,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onPaginationChange: setPagination,
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      pagination,
-      rowSelection,
-    },
-  });
   return (
     <>
-      <div className="flex md:flex-row flex-col justify-between md:items-center items-start gap-4 mb-4">
-        <Input
-          placeholder="Filter first names..."
-          value={
-            (table.getColumn("firstName")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("firstName")?.setFilterValue(event.target.value)
-          }
-          className="lg:w-[60%] w-full"
-        />
-        <Button variant={"dashed"} className="shadow-none py-5">
-          <FolderIcon className="size-5" /> Export to Excel
-        </Button>
-      </div>
-
-      <div className="border-t border-dashed border-mistyBlue/20 pt-2 mt-5">
-        <DataTable columns={columns} table={table} />
-      </div>
-
-      <DataTablePagination table={table} selectedRows />
-
+      <PatientFilters />
+      <DataTable data={patients} columns={columns} />
       <DeleteConfirmationDialog
         isDeleteOpen={isDeleteOpen}
         setIsDeleteOpen={setIsDeleteOpen}
@@ -229,4 +202,4 @@ const ListPatients = () => {
   );
 };
 
-export default ListPatients;
+export default ListPatient;

@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import classNames from "classnames";
 
 type InputFieldProps = {
   form: any;
@@ -15,6 +14,7 @@ type InputFieldProps = {
   name: string;
   type?: string;
   required?: boolean;
+  placeholder?: string;
 };
 
 const InputField = ({
@@ -23,6 +23,7 @@ const InputField = ({
   name,
   type = "text",
   required,
+  placeholder,
 }: InputFieldProps) => {
   return (
     <FormField
@@ -43,7 +44,8 @@ const InputField = ({
             <Input
               type={type}
               className={cn(
-                fieldState.error && "dark:border-red-500 border-red-500 focus:ring-0"
+                fieldState.error &&
+                  "dark:border-red-500 border-red-500 focus:ring-0"
               )}
               {...field}
               onChange={(e) => {
@@ -54,6 +56,7 @@ const InputField = ({
                   field.onChange(value);
                 }
               }}
+              placeholder={placeholder}
             />
           </FormControl>
         </FormItem>

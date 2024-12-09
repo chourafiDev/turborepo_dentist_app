@@ -139,26 +139,6 @@ export const sideBarItems = [
         "menu-link": "/help",
         "menu-icon": InfoIcon,
       },
-      {
-        "menu-item": "Help",
-        "menu-link": "/help",
-        "menu-icon": InfoIcon,
-      },
-      {
-        "menu-item": "Help",
-        "menu-link": "/help",
-        "menu-icon": InfoIcon,
-      },
-      {
-        "menu-item": "Help",
-        "menu-link": "/help",
-        "menu-icon": InfoIcon,
-      },
-      {
-        "menu-item": "Help",
-        "menu-link": "/help",
-        "menu-icon": InfoIcon,
-      },
     ],
   },
 ];
@@ -239,8 +219,7 @@ export const statistics = [
 export const patients = [
   {
     id: 1,
-    firstName: "Jhon",
-    lastName: "bean",
+    fullName: "Jhon",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 20,
@@ -251,8 +230,7 @@ export const patients = [
   },
   {
     id: 2,
-    firstName: "Tom",
-    lastName: "Barrel",
+    fullName: "Tom",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 27,
@@ -263,8 +241,7 @@ export const patients = [
   },
   {
     id: 3,
-    firstName: "Donal",
-    lastName: "Cortez",
+    fullName: "Donal",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 34,
@@ -275,8 +252,7 @@ export const patients = [
   },
   {
     id: 4,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 20,
@@ -287,8 +263,7 @@ export const patients = [
   },
   {
     id: 5,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -299,8 +274,7 @@ export const patients = [
   },
   {
     id: 6,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -311,8 +285,7 @@ export const patients = [
   },
   {
     id: 7,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -326,8 +299,7 @@ export const patients = [
 export const staff = [
   {
     id: 1,
-    firstName: "Jhon",
-    lastName: "bean",
+    fullName: "bean",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 20,
@@ -337,8 +309,7 @@ export const staff = [
   },
   {
     id: 2,
-    firstName: "Tom",
-    lastName: "Barrel",
+    fullName: "Tom",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 27,
@@ -348,8 +319,7 @@ export const staff = [
   },
   {
     id: 3,
-    firstName: "Donal",
-    lastName: "Cortez",
+    fullName: "Donal",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 34,
@@ -359,8 +329,7 @@ export const staff = [
   },
   {
     id: 4,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 20,
@@ -370,8 +339,7 @@ export const staff = [
   },
   {
     id: 5,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -381,8 +349,7 @@ export const staff = [
   },
   {
     id: 6,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -392,8 +359,7 @@ export const staff = [
   },
   {
     id: 7,
-    firstName: "Bain",
-    lastName: "Lemin",
+    fullName: "Bain",
     email: "jhon@gmail.com",
     phone: "067534567",
     age: 43,
@@ -490,6 +456,12 @@ export const appointments = [
 export const genders = [
   { value: "male", label: "Male" },
   { value: "female", label: "Female" },
+];
+
+export const patientActions = [
+  { value: "Emergency Care", label: "Emergency Care" },
+  { value: "Preventive Care", label: "Preventive Care" },
+  { value: "Surgical Procedures", label: "Surgical Procedures" },
 ];
 
 export const categories = [
